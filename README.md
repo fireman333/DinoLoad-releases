@@ -6,26 +6,23 @@
 
 ---
 
-## 安裝（重要）
+## 安裝
 
-DinoLoad 目前是**免費測試版**，還沒做 Apple 公證 (notarization)，所以第一次打開 macOS 會跳「**無法打開，因為來自未經驗證的開發者**」。這不是病毒警告 —— 只是 Apple 對未付費認證的 app 一律這樣擋。
+DinoLoad 是免費測試版，還沒做 Apple 公證 (notarization)，所以直接雙擊會被 macOS 擋（「來自未經驗證的開發者」）。這不是病毒 —— 照下面**四個步驟**做，一定能裝起來：
 
-> ⚠️ **重點**：不要直接對 DMG 裡的 app 解除隔離 —— DMG 是唯讀的會報錯。正確做法是**先複製到「應用程式」，再解除阻擋**。
+**1.** 從上面的 **Releases** 下載 `DinoLoad-x.y.z.dmg`，**雙擊打開**它（會出現一個叫「DinoLoad」的磁碟）。
 
-### 方法一（最簡單、一定成功）：終端機貼一行
-打開下載的 DMG 後，打開「終端機」(Terminal)，貼上這行按 Enter：
+**2.** 打開「**終端機**」(Terminal)：按 `⌘ + 空白鍵` 開 Spotlight，輸入「終端機」按 Enter。
+
+**3.** 把下面這**一整行**複製貼上到終端機，按 **Enter**：
 
 ```bash
 cp -R "/Volumes/DinoLoad/DinoLoad.app" /Applications/ && xattr -cr "/Applications/DinoLoad.app" && open "/Applications/DinoLoad.app"
 ```
 
-複製到「應用程式」→ 清掉隔離標記 → 啟動。
+**4.** 完成！DinoLoad 會自動裝進「應用程式」並啟動。
 
-### 方法二：用終端機跑內附的安裝腳本
-打開「終端機」，輸入 `bash` 再空一格，把 DMG 裡的 `安裝.command` **拖**進終端機視窗，按 Enter。（用 `bash` 執行腳本不會被 Gatekeeper 擋；雙擊才會。）
-
-### 方法三：雙擊 `安裝.command`
-在 macOS 15 (Sequoia) 以上常會被擋（「系統不允許」）。被擋就改用方法一或方法二。DMG 裡的 `必讀-安裝說明.txt` 有完整說明。
+> 這行做的事：把 app 複製到「應用程式」→ 清掉 macOS 的隔離標記（這步就是繞過「未驗證開發者」阻擋的關鍵）→ 啟動。之後直接從「應用程式」開即可，不用再跑一次。
 
 ---
 
